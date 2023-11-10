@@ -1,6 +1,6 @@
 # Monkey App Clone
 
-This project is a minimal clone of the Monkey App, a social media app that allows users to chat with random people. It uses a variety of technologies including ReactJS for the frontend, Redux Toolkit for state management, PeerJS for WebRTC, Socket.IO for WebSockets, BunJS for the backend, and Docker for containerization and orchestration.
+This project is a minimal clone of the Monkey App, a social media app that allows users to chat with random people. It uses a variety of technologies including ReactJS for the frontend, Redux Toolkit for state management, PeerJS for WebRTC, React useWebSocket, BunJS for the backend, and Docker for containerization and orchestration.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ This project is a minimal clone of the Monkey App, a social media app that allow
 
 ## Description
 
-The Monkey App Clone is a project that aims to replicate the functionality of the Monkey App. It allows users to engage in video chats using WebRTC technology. It also allows users to send text messages to each other using WebRTC DataChannel. The app is built using ReactJS for the frontend, Redux Toolkit for state management, PeerJS for WebRTC, Socket.IO for WebSockets, BunJS for the backend, and Docker for containerization and orchestration.
+The Monkey App Clone is a project that aims to replicate the functionality of the Monkey App. It allows users to engage in video chats using WebRTC technology. It also allows users to send text messages to each other using WebRTC DataChannel. The app is built using ReactJS for the frontend, Redux Toolkit for state management, PeerJS for WebRTC, React useWebSocket, BunJS for the backend, and Docker for containerization and orchestration.
 
 ## Technologies Used
 
