@@ -1,20 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BiSolidSend } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { addMessage } from "../messagingSlice";
 import { ClearChatButton } from "./ClearChatButton";
+import { VideoProvider } from "@/utils/constants";
 
 export const MessageInput = () => {
-  const dispatch = useDispatch();
+  const { send } = useContext(VideoProvider);
+
   return (
-    <form
-      className="text-white flex gap-3"
-      onSubmit={(e) => {
-        e.preventDefault();
-        dispatch(addMessage(e.target[0].value));
-        e.target[0].value = "";
-      }}
-    >
+    <form className="text-white flex gap-3" onSubmit={send}>
       <div className="relative flex-1">
         <input
           className="w-full h-12 px-4 rounded-full bg-[#00000052] text-white placeholder-gray-300 text-xs focus:outline-none pr-10"

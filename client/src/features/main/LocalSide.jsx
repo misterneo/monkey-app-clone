@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import ChatOverlay from "../messaging/index";
 import { StartVideoChatOverlay } from "./components/StartVideoChatOverlay";
 import { LoadingOverlay } from "./components/LoadingOverlay";
-import { VideoProvider } from "../video/useVideo";
+import { VideoProvider } from "@/utils/constants";
 import { Side } from "@/layouts/Side";
 
 export const LocalSide = () => {

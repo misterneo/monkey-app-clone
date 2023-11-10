@@ -1,5 +1,5 @@
 import React from "react";
-import { EndCallButton } from "../video/components/EndCallButton";
+import { EndCallButton } from "../main/components/EndCallButton";
 import { MessagesBox } from "./components/MessagesBox";
 import { MessageInput } from "./components/MessageInput";
 

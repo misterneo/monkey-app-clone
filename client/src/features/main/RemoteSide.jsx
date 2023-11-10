@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Side } from "@/layouts/Side";
 import { WelcomeOverlay } from "./components/WelcomeOverlay";
 import { LoadingOverlay } from "./components/LoadingOverlay";
 import { RemoteVideoOverlay } from "./components/RemoteVideoOverlay";
+import { VideoProvider } from "@/utils/constants";
 
 export const RemoteSide = () => {
   const started = useSelector((state) => state.main.started);
   const loading = useSelector((state) => state.main.loading);
+  const waiting = useSelector((state) => state.main.waitingForMatch);
+  const { remoteStream } = useContext(VideoProvider);
 
   function renderOverlay() {
     if (loading) {
       return <LoadingOverlay />;
+    }
+
+    if (waiting) {
+      return <LoadingOverlay message="Waiting for a match..." />;
     }
 
     if (!started) {
@@ -21,5 +28,9 @@ export const RemoteSide = () => {
     return <RemoteVideoOverlay />;
   }
 
-  return <Side isLocal={false}>{renderOverlay()}</Side>;
+  return (
+    <Side videoRef={remoteStream} isLocal={false}>
+      {renderOverlay()}
+    </Side>
+  );
 };

@@ -1,12 +1,14 @@
 import React from "react";
 import { LocalSide } from "./LocalSide";
 import { RemoteSide } from "./RemoteSide";
-import { VideoProvider, useVideo } from "../video/useVideo";
+import { VideoProvider } from "@/utils/constants";
+import usePeer from "@/utils/usePeer";
 
 const index = () => {
-  const value = useVideo();
+  const values = usePeer();
+
   return (
-    <VideoProvider.Provider value={value}>
+    <VideoProvider.Provider value={values}>
       <RemoteSide />
       <LocalSide />
     </VideoProvider.Provider>

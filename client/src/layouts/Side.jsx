@@ -1,4 +1,4 @@
-import { VideoPlayer } from "@/features/video/components/VideoPlayer";
+import { VideoPlayer } from "@/features/main/components/VideoPlayer";
 import React from "react";
 
 export const Side = ({ videoRef, children, className, isLocal = true }) => {
