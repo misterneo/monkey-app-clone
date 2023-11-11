@@ -11,3 +11,8 @@ export interface User {
   id: string;
   ws: ServerWebSocket<unknown>;
 }
+
+export type MessageData = {
+  event: Event;
+  id: string;
+};

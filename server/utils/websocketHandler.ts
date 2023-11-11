@@ -1,6 +1,6 @@
 import { ServerWebSocket } from "bun";
 import { init } from "./helpers";
-import { Event, User } from "./types";
+import { Event, MessageData, User } from "./types";
 const { log } = init();
 
 let users: User[] = [];
@@ -15,13 +15,21 @@ export const message = function handleMessage(
     return;
   }
 
-  const data = JSON.parse(message.toString());
+  let data: MessageData | null = null;
+  try {
+    data = JSON.parse(message.toString());
+  } catch (error) {
+    log("Error parsing JSON:", error);
+    return;
+  }
+
+  if (!data || !data.id || !data.event) return;
 
   if (
-    data.event === Event.JOIN ||
-    (data.event === Event.SKIP && !users.find((user) => user.id === data.id))
+    (data.event === Event.JOIN || data.event === Event.SKIP) &&
+    !users.find((user) => user.id === data?.id)
   ) {
-    if (data.event === Event.JOIN) log("User joined", data.id);
+    log(`${data.event} event triggered -`, data.id);
     users.push({ id: data.id, ws });
     matchUsers();
   }
