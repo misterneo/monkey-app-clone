@@ -62,9 +62,13 @@ bun install
 bun run index.ts
 ```
 
-The app will run on port 3000 by default. Specify the port using the `--port` flag, e.g., `bun run index.ts --port 5000`. Enable debug mode using `--debug` flag, e.g., `bun run index.ts --debug`.
+This will start a WebSocket and HTTP server on port 3000.
 
-Update the `SERVER_PORT` constant in `client/src/utils/constants.js` to the backend server port. Default is set to `3000`.
+Optionally:
+
+> You can Specify the port using the `--port` flag, e.g., `bun run index.ts --port 5000`. Enable debug mode using `--debug` flag, e.g., `bun run index.ts --debug`.
+
+> If you decide to change the default port, You will need to update the `SERVER_PORT` constant in `client/src/utils/constants.js` to the backend server port. Default is set to `3000`.
 
 #### Running the frontend
 
