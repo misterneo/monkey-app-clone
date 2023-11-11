@@ -68,7 +68,7 @@ Optionally:
 
 > You can Specify the port using the `--port` flag, e.g., `bun run index.ts --port 5000`. Enable debug mode using `--debug` flag, e.g., `bun run index.ts --debug`.
 
-> If you decide to change the default port, You will need to update the `SERVER_PORT` constant in `client/src/utils/constants.js` to the backend server port. Default is set to `3000`.
+> If you decide to change the default port, you will need to update the `VITE_SERVER_PORT` variable in the `.env.local` file in the `client` directory. You can do that by copying the `.env.example` file and renaming it to `.env.local`. Then, update the `VITE_SERVER_PORT` variable to the port you specified.
 
 #### Running the frontend
 
