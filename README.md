@@ -2,6 +2,8 @@
 
 This project is a minimal clone of the Monkey App, a social media app that allows users to chat with random people. It uses a variety of technologies including ReactJS for the frontend, Redux Toolkit for state management, PeerJS for WebRTC, React useWebSocket, BunJS for the backend, and Docker for containerization and orchestration.
 
+A live demo of the application can be accessed at: [https://monkey.misterneo.pro](https://monkey.misterneo.pro)
+
 ## Table of Contents
 
 - [Description](#description)
