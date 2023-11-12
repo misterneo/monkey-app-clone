@@ -9,6 +9,7 @@ import {
   setLoading,
   setReady,
   setStarted,
+  setOnlineUsersCount,
   setWaitingForMatch,
 } from "@/features/main/mainSlice";
 
@@ -57,7 +58,15 @@ export default function usePeer() {
 
   useEffect(() => {
     if (lastMessage) {
-      const { event, id, isCaller } = JSON.parse(lastMessage.data);
+      const { event, id, isCaller, onlineUsersCount } = JSON.parse(
+        lastMessage.data
+      );
+
+      if (onlineUsersCount) {
+        dispatch(setOnlineUsersCount(onlineUsersCount));
+        return;
+      }
+
       if (event === MESSAGE_EVENTS.MATCH) {
         dispatch(setWaitingForMatch(false));
         const dataConnection = peer.connect(id);

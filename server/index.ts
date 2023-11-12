@@ -1,8 +1,9 @@
+import { Server } from "bun";
 import { createId, init } from "./utils/helpers";
 import { message, open, close } from "./utils/websocketHandler";
 const { port } = init();
 
-const server = Bun.serve<{ id: string }>({
+const server: Server = Bun.serve<{ id: string }>({
   port: port,
   fetch(req, server) {
     return server.upgrade(req, { data: { id: createId() } })
@@ -12,7 +13,7 @@ const server = Bun.serve<{ id: string }>({
   websocket: {
     message,
     open,
-    close,
+    close: (ws) => close(ws, server),
   },
 });
 

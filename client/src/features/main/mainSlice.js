@@ -6,6 +6,7 @@ const initialState = {
   waitingForMatch: false,
   error: null,
   ready: false,
+  onlineUsersCount: 1,
 };
 
 export const mainSlice = createSlice({
@@ -27,6 +28,9 @@ export const mainSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
+    setOnlineUsersCount: (state, action) => {
+      state.onlineUsersCount = action.payload;
+    },
   },
 });
 
@@ -36,6 +40,7 @@ export const {
   setWaitingForMatch,
   setReady,
   setError,
+  setOnlineUsersCount,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

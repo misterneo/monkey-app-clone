@@ -5,6 +5,7 @@ export enum Event {
   SKIP = "skip",
   MATCH = "match",
   WAITING = "waiting",
+  ONLINE = "online",
 }
 
 export interface User {
