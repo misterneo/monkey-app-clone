@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import { log } from "@/utils/helpers";
 import { HEARTBEAT, MESSAGE_EVENTS, WS_URL, peer } from "@/utils/constants";
 import { addMessage, clearMessages } from "@/features/messaging/messagingSlice";
 import {
+  setError,
   setLoading,
+  setReady,
   setStarted,
   setWaitingForMatch,
 } from "@/features/main/mainSlice";
 
 export default function usePeer() {
+  const ready = useSelector((state) => state.main.ready);
   const dispatch = useDispatch();
   const [myPeerId, setMyPeerId] = useState();
 
@@ -23,6 +26,9 @@ export default function usePeer() {
 
   const { sendMessage, lastMessage, readyState } = useWebSocket(WS_URL, {
     heartbeat: HEARTBEAT,
+    onError: (e) => {
+      dispatch(setError("default"));
+    },
   });
 
   useEffect(() => {
@@ -30,6 +36,12 @@ export default function usePeer() {
       log("Peer open");
 
       setMyPeerId(id);
+
+      if (readyState !== ReadyState.CLOSED) {
+        dispatch(setReady(true));
+      } else {
+        dispatch(setError("default"));
+      }
     });
 
     peer.on("connection", (conn) => {
@@ -125,6 +137,10 @@ export default function usePeer() {
   }
 
   const join = async () => {
+    if (!ready) {
+      dispatch(setError("default"));
+      return;
+    }
     await startVideoStream();
     if (readyState === ReadyState.OPEN) {
       sendMessage(JSON.stringify({ event: MESSAGE_EVENTS.JOIN, id: myPeerId }));

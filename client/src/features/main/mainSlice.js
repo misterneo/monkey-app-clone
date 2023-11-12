@@ -4,6 +4,8 @@ const initialState = {
   started: false,
   loading: false,
   waitingForMatch: false,
+  error: null,
+  ready: false,
 };
 
 export const mainSlice = createSlice({
@@ -19,9 +21,21 @@ export const mainSlice = createSlice({
     setWaitingForMatch: (state, action) => {
       state.waitingForMatch = action.payload;
     },
+    setReady: (state, action) => {
+      state.ready = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
-export const { setStarted, setLoading, setWaitingForMatch } = mainSlice.actions;
+export const {
+  setStarted,
+  setLoading,
+  setWaitingForMatch,
+  setReady,
+  setError,
+} = mainSlice.actions;
 
 export default mainSlice.reducer;
