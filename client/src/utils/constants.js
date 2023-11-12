@@ -5,7 +5,12 @@ export const debugMode = import.meta.env.VITE_DEBUG_MODE === "true" || false;
 
 export const VideoProvider = createContext();
 
-export const peer = new Peer();
+export const peer = new Peer({
+  host: import.meta.env.VITE_PEERJS_HOST || "0.peerjs.com",
+  port: import.meta.env.VITE_PEERJS_PORT || 443,
+  path: import.meta.env.VITE_PEERJS_PATH || "/",
+  secure: import.meta.env.VITE_PEERJS_SECURE !== "false",
+});
 
 const SERVER_PORT = import.meta.env.VITE_SERVER_PORT || 3000;
 const CLIENT_PORT = 5173;
