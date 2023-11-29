@@ -2,7 +2,10 @@ import React from "react";
 
 export const AppLayout = ({ children }) => {
   return (
-    <div className="h-screen w-screen bg-gray-500 flex landscape:flex-row flex-col">
+    <div
+      style={{ height: "100svh" }}
+      className="w-screen bg-gray-500 flex landscape:flex-row flex-col"
+    >
       {children}
     </div>
   );
